@@ -14,6 +14,12 @@ stages:
    jobs:
    - job: Build
      steps:
+        - task: SonarQubePrepare@5
+          inputs:
+            SonarQube: 'SonarQubeService' 
+            scannerMode: 'MSBuild'
+            projectKey: 'Azure_DevOps_Course_Azure_DevOps_Course_7a5d9c7d-1b94-4458-89a1-63fce7cc70d3'  
+            projectName: 'Shopping Frontend'
         - task: DotNetCoreCLI@2
           inputs:
             command: 'restore'
@@ -32,7 +38,11 @@ stages:
           inputs:
             codeCoverageTool: Cobertura
             summaryFileLocation: '$(Agent.TempDirectory)\**\coverage.cobertura.xml'
+        - task: SonarQubeAnalyze@5
 
+        - task: SonarQubePublish@5
+          inputs:
+            pollingTimeoutSec: '300'
         - task: DotNetCoreCLI@2
           inputs:
             command: 'build'
