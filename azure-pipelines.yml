@@ -62,3 +62,70 @@ stages:
 
         - publish: $(Build.ArtifactStagingDirectory)
           artifact: drop
+ 
+ - stage: Deploy_to_STG
+   variables:
+   - group: frontend-stg
+   jobs:
+   - deployment: Deploy_to_STG
+     environment:
+       name: stg.stg
+     strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: replacetokens@6
+            inputs:
+              root: '$(Artifact_folder)'
+              sources: |
+                *.json
+                **/*.yaml
+          - task: Docker@2
+            inputs:
+              containerRegistry: 'acr'
+              repository: 'shoppingfrontend'
+              command: 'buildAndPush'
+              Dockerfile: '$(Artifact_folder)/Dockerfile'
+              tags: '$(image_tag)'
+          - task: HelmDeploy@0
+            displayName: 'helm upgrade'
+            inputs:
+              namespace: '$(namespace)'
+              command: upgrade
+              chartType: FilePath
+              chartPath: '$(Artifact_folder)/HelmChart'
+              releaseName: '$(release_name)'
+              overrideValues: 'image.tag=$(image_tag)'
+ - stage: Deploy_to_PROD
+   variables:
+   - group: frontend-prod
+   jobs:
+   - deployment: Deploy_to_PROD
+     environment:
+      name: prod.prod
+     strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: replacetokens@6
+            inputs:
+              root: '$(Artifact_folder)'
+              sources: |
+                *.json
+                **/*.yaml
+          - task: Docker@2
+            inputs:
+              containerRegistry: 'acr'
+              repository: 'shoppingfrontend'
+              command: 'buildAndPush'
+              Dockerfile: '$(Artifact_folder)/Dockerfile'
+              tags: '$(image_tag)'
+          - task: HelmDeploy@0
+            displayName: 'helm upgrade'
+            inputs:
+              namespace: '$(namespace)'
+              command: upgrade
+              chartType: FilePath
+              chartPath: '$(Artifact_folder)/HelmChart'
+              releaseName: '$(release_name)'
+              overrideValues: 'image.tag=$(image_tag)'
