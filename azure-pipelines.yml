@@ -54,11 +54,11 @@ stages:
             TargetFolder: '$(build.artifactstagingdirectory)/ShoppingFrontend/'
 
  
-        # - task: CopyFiles@2
-        #   displayName: 'Copy Files to: $(build.artifactstagingdirectory)ShoppingFrontend//helmchart'
-        #   inputs:
-        #     SourceFolder: HelmChart
-        #     TargetFolder: '$(build.artifactstagingdirectory)/ShoppingFrontend//HelmChart'
+        - task: CopyFiles@2
+          displayName: 'Copy Files to: $(build.artifactstagingdirectory)ShoppingFrontend//helmchart'
+          inputs:
+            SourceFolder: HelmChart
+            TargetFolder: '$(build.artifactstagingdirectory)/ShoppingFrontend//HelmChart'
 
         - publish: $(Build.ArtifactStagingDirectory)
           artifact: drop
