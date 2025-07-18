@@ -35,9 +35,7 @@ This repository contains:
 
 ### ✅ Azure DevOps Pipeline
 ![Pipeline](images/build.png)
-
 ![Pipeline](images/stg.png)
-
 ![Pipeline](images/prod.png)
 
 ### 📦 Docker Image in ACR
