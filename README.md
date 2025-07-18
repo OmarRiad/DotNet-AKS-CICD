@@ -34,9 +34,17 @@ This repository contains:
 ## 📸 Screenshots
 
 ### ✅ Azure DevOps Pipeline
-![Pipeline](images/build.png)
-![Pipeline](images/stg.png)
-![Pipeline](images/prod.png)
+### ✅ Azure DevOps Pipeline Overview
+
+#### 🔧 Build & Test Stage
+<img src="images/build.png" alt="Build Stage" width="400"/>
+
+#### 🌐 Deploy to Staging
+<img src="images/stg.png" alt="Staging Deployment" width="400"/>
+
+#### 🚀 Deploy to Production
+<img src="images/prod.png" alt="Production Deployment" width="400"/>
+
 
 ### 📦 Docker Image in ACR
 ![ACR](images/acr.png)
