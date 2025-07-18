@@ -2,8 +2,6 @@
 
 This project demonstrates a complete DevOps pipeline for a containerized **ASP.NET Core** application deployed to **Azure Kubernetes Service (AKS)** using **Azure DevOps**, **Helm**, and **SonarQube**.
 
-> 🚀 Developed during my internship at **EFG Holding**
-
 ---
 
 ## 🌐 Project Overview
