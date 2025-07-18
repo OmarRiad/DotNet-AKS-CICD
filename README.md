@@ -46,7 +46,7 @@ This repository contains:
 
 
 ### 🧪 SonarQube Code Quality
-![SonarQube](images/sonarqube.png)
+![SonarQube](images/SonarQube.png)
 ---
 ## 🧪 CI/CD Pipeline Highlights
 
