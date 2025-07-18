@@ -35,7 +35,9 @@ This repository contains:
 
 ### ✅ Azure DevOps Pipeline
 ![Pipeline](images/build.png)
+
 ![Pipeline](images/stg.png)
+
 ![Pipeline](images/prod.png)
 
 ### 📦 Docker Image in ACR
@@ -55,6 +57,7 @@ This repository contains:
   - Docker
   - Helm
   - kubectl
+  - .NET 8.0 SDK
 - **Build Stage**
   - Restore, test, and build the app
   - Running tests and Code coverage reporting 
