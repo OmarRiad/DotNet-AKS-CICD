@@ -32,7 +32,6 @@ This repository contains:
 ## 📸 Screenshots
 
 ### ✅ Azure DevOps Pipeline
-### ✅ Azure DevOps Pipeline Overview
 
 #### 🔧 Build & Test Stage
 <img src="images/build.png" alt="Build Stage" width="400"/>
