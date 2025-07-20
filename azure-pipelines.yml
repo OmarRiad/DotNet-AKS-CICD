@@ -38,16 +38,17 @@ stages:
           inputs:
             codeCoverageTool: Cobertura
             summaryFileLocation: '$(Agent.TempDirectory)\**\coverage.cobertura.xml'
-        - task: SonarQubeAnalyze@5
 
-        - task: SonarQubePublish@5
-          inputs:
-            pollingTimeoutSec: '300'
         - task: DotNetCoreCLI@2
           inputs:
             command: 'build'
             projects:  '*.sln'
             
+        - task: SonarQubeAnalyze@5
+
+        - task: SonarQubePublish@5
+          inputs:
+            pollingTimeoutSec: '300'
 
         - task: DotNetCoreCLI@2
           displayName: 'dotnet publish'
